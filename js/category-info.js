@@ -42,7 +42,13 @@ document.addEventListener("DOMContentLoaded", function(e){
             showImagesGallery(category.images);
 
             console.log("Debajo de esta linea escriban su nombre: ");
+<<<<<<< HEAD
             console.log("Andrés Aranda, Santiago Montiel, Lucia Todoroff");
+=======
+            console.log("Pamela Regalado, Alcides Rosano ");
+>>>>>>> master
+            
         }
+
     });
 });
