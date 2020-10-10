@@ -41,14 +41,24 @@ document.addEventListener("DOMContentLoaded", function(e){
             //Muestro las imagenes en forma de galería
             showImagesGallery(category.images);
 
-            console.log("Debajo de esta linea escriban su nombre: ");
-<<<<<<< HEAD
-            console.log("Andrés Aranda, Santiago Montiel, Lucia Todoroff");
-=======
-            console.log("Pamela Regalado, Alcides Rosano ");
->>>>>>> master
             
         }
 
     });
 });
+document.addEventListener("DOMContentLoaded", function(e){
+    document.getElementById("Miperfil").addEventListener("click",function(){
+        location.href="my-profile.html";
+
+    })});
+    document.addEventListener("DOMContentLoaded", function(e){
+        document.getElementById("Carrito").addEventListener("click",function(){
+            location.href="cart.html";
+    
+        })});
+        document.addEventListener("DOMContentLoaded", function(e){
+            document.getElementById("Salir").addEventListener("click",function(){
+                location.href="index.html";
+        
+            })});
+    

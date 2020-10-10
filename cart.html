@@ -34,36 +34,54 @@
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-    </div>
-  </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script>
+    $(document).ready(function () {
+      //alert(localStorage.getItem('usuario'));
+      $('#usuario').text('Bienvenido ' + localStorage.getItem('usuario'));
+    });
+
+  </script>
+  <nav class="site-header sticky-top py-1 bg-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <a class="dropdown" id="usuario" style="color: antiquewhite;" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">Bienvenido</a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a id="Miperfil" class="dropdown-item" href="#">Mi perfil</a>
+        <a id="Carrito" class="dropdown-item" href="#">Carrito</a>
+        <a id="Salir" class="dropdown-item" href="#">Salir</a>
+      </div>
+    </div>
+  </nav>
+  <h1 class="text-center p-4">Carrito de Compras</h1>
+  
+
+
+  <div class="row">
+    <div class="list-group" id="art-list-container">
+    </div>
+
+    <hr>
+
+
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
 </body>
 
 </html>
