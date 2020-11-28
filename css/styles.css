@@ -174,3 +174,9 @@ label:hover ~ label {
 input[type="radio"]:checked ~ label {
   color: rgb(229, 255, 0);
 }
+.table {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}

@@ -7,12 +7,19 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <title>Mi perfil</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
   <style>
+    .cabecera{
+      text-align: center;
+      height: 300px ;
+      padding: 12px;
+      background-image: url(img/bg.jpg); 
+      
+    }
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -53,7 +60,7 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="dropdown" id="usuario" style="color: antiquewhite;" data-toggle="dropdown"aria-haspopup="true"
+      <a class="py-2 d-none d-md-inline-block" id="usuario" style="color: antiquewhite;" data-toggle="dropdown"aria-haspopup="true"
       aria-expanded="false" >Bienvenido</a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a id= "Miperfil" class="dropdown-item" href="#">Mi perfil</a>
@@ -62,26 +69,102 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="form-control">
+  <div class="cabecera">
+  
+    <img class="profile-background-image-edit-button__hint" src="img/usuario.png" alt="200px" height="200px" border-radius="50%">
+    <h1>Usuario</h1>
+    <div style="right: 150;">
+    <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal">Editar Perfil</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        
+        <div class="h4 text-center">Información de Contacto</div>
+        
+        
+        <span class="artdeco-button__text">
+            Cargar foto de perfil
+        </span></button>
+        <input id="cargarFoto" aria-label="Cargar imagen de fondo" aria-describedby="profile-background-image-edit-button__hint" class="profile-background-image-edit-button__upload" accept="image/*" type="file">
+        <div class="row pv-lg">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+             <form class="form-horizontal ng-pristine ng-valid">
+              <div class="form-group">
+          <label class="col-sm-2 control-label" for="productName">Nombre:</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="nombre" placeholder="" value="" >
+        </div>
+      </div>
+      <div class="form-group">
+          <label class= "col-sm-2 control-label"for="productName">Apellido:</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="apellido" placeholder="" value="" >
+        </div>
+      </div>
+      <div class="form-group">
+          <label class="col-sm-2 control-label" for="productName">Edad:</label>
+          <div class="col-sm-10">
+          <input type="number" class="form-control" id="edad" placeholder="" value="" >
+        </div>
+      </div>
+      <div class="form-group">
+          <label class= "col-sm-2 control-label"for="productName">Dirección:</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="dirección" placeholder="" value="" >
+        </div>
+      </div>
+      <div class="form-group"></div>
+          <label class="col-sm-2 control-label" for="productName">Teléfono:</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="tel" placeholder="" value="" >
+        </div>
+      </div>
+      
+      </form>
+      </div>
+      <div class="modal-footer">
+      <br>
+      <button type="button" class="btn btn-default" onclick="guardar()" data-dismiss="modal">Guardar cambios</button>
+      </div>
     </div>
   </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
+</div>
+  </div>
+
+  <div class="container">
+  <div class="row">
+  <div class="col-md-4"></div>
+  
+  
+  
+  </div>
+</div>
+</div>
+</div>
+
+
+<div id="muestroPerfil">
+  <p>Nombre<p>
+  <p>Apellido</p>
+  <p>Edad</p>
+  <p>Dirección</p>
+  <p>Teléfono</p>
+
+
+</div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

@@ -20,6 +20,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/inicio.js"></script>
   <script>
     $(document).ready(function () {
       //alert(localStorage.getItem('usuario'));
@@ -27,14 +28,48 @@
     });
 
   </script>
-  <nav class="site-header sticky-top py-1 bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+  <div class="collapse navbar-collapse px-2" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto mx-auto">
+          <li class="nav-item active px-5">
+              <a class="nav-link" href="inicio.html">Inicio </a>
+          </li>
+          <li class="nav-item active px-5">
+              <a class="nav-link" href="categories.html">Categorías </a>
+          </li>
+          <li class="nav-item active  px-5">
+              <a class="nav-link" href="products.html">Productos </a>
+          </li>
+          <li class="nav-item active px-5">
+              <a class="nav-link" href="sell.html">Vender </a>
+          </li>
+          <li class="nav-item dropdown px-5">
+            <a class="nav-link" id="usuario" style="color: rgb(248, 248, 248);" data-toggle="dropdown"aria-haspopup="true"
+            aria-expanded="false" >Bienvenido</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a id= "Miperfil" class="dropdown-item" href="#">Mi perfil</a>
+              <a id= "Carrito"class="dropdown-item" href="#">Carrito</a>
+              <a id= "Salir"class="dropdown-item" href="#">Salir</a>
+            </div>
+          </li>
+      </ul>
+
+  </div>
+</nav>
+
+
+  <!--nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="dropdown" id="usuario" style="color: rgb(248, 248, 248);" data-toggle="dropdown"aria-haspopup="true"
+      <a class="py-2 d-none d-md-inline-block" id="usuario" style="color: rgb(248, 248, 248);" data-toggle="dropdown"aria-haspopup="true"
       aria-expanded="false" >Bienvenido</a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a id= "Miperfil" class="dropdown-item" href="#">Mi perfil</a>
@@ -43,7 +78,7 @@
       </div>
     </div>
     </div>
-  </nav>
+  </nav-->
   <main role="main">
     <section class="jumbotron text-center">
       <div class="m-5">

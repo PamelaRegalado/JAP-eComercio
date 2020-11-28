@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>Mi perfil</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <style>
+    body{
+    margin-top:20px;
+    background:#f5f7fa;
+}
+.panel.panel-default {
+    border-top-width: 3px;
+}
+.panel {
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.14),0 2px 2px 0 rgba(0,0,0,.098),0 1px 5px 0 rgba(0,0,0,.084);
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+.thumb96 {
+    width: 96px!important;
+    height: 96px!important;
+}
+.thumb48 {
+    width: 48px!important;
+    height: 48px!important;
+}
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/dropzone.css" rel="stylesheet">
+</head>
+
+<body>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dropzone.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/my-profile.js"></script>
+  <script>
+    $(document).ready(function () {
+      //alert(localStorage.getItem('usuario'));
+      $('#usuario').text('Bienvenido ' + localStorage.getItem('usuario'));
+    });
+
+  </script>
+  <nav class="site-header sticky-top py-1 bg-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <a class="py-2 d-none d-md-inline-block" id="usuario" style="color: antiquewhite;" data-toggle="dropdown"aria-haspopup="true"
+      aria-expanded="false" >Bienvenido</a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a id= "Miperfil" class="dropdown-item" href="#">Mi perfil</a>
+        <a id= "Carrito"class="dropdown-item" href="#">Carrito</a>
+        <a id= "Salir"class="dropdown-item" href="#">Salir</a>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container bootstrap snippets bootdey">
+    <div class="row ng-scope">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <div class="pv-lg"><img class="center-block img-responsive img-circle img-thumbnail thumb96" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Contact"></div>
+                    <h3 class="m0 text-bold">Audrey Hunt</h3>
+                    <div class="mv-lg">
+                        <p>Hello, I'm a just a dummy contact in your contact list and this is my presentation text. Have fun!</p>
+                    </div>
+                    <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+    
+            <label for="productName">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="" value="" >
+            <label for="productName">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" placeholder="" value="" >
+            <label for="productName">Edad:</label>
+            <input type="number" class="form-control" id="edad" placeholder="" value="" >
+            <label for="productName">Dirección:</label>
+            <input type="text" class="form-control" id="dirección" placeholder="" value="" >
+            <label for="productName">Teléfono:</label>
+            <input type="text" class="form-control" id="tel" placeholder="" value="" >
+        
+        
+        </form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="guardar()" data-dismiss="modal">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+    </div>
+                </div>
+            </div>
+            <div class="panel panel-default hidden-xs hidden-sm">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">Recent contacts</div>
+                </div>
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Contact"></a>
+                        </div>
+                        <div class="media-body pt-sm">
+                            <div class="text-bold">Floyd Ortiz
+                                <div class="text-sm text-muted">12m ago</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Contact"></a>
+                        </div>
+                        <div class="media-body pt-sm">
+                            <div class="text-bold">Luis Vasquez
+                                <div class="text-sm text-muted">2h ago</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Contact"></a>
+                        </div>
+                        <div class="media-body pt-sm">
+                            <div class="text-bold">Duane Mckinney
+                                <div class="text-sm text-muted">yesterday</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Contact"></a>
+                        </div>
+                        <div class="media-body pt-sm">
+                            <div class="text-bold">Connie Lambert
+                                <div class="text-sm text-muted">2 weeks ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <div class="btn-group dropdown" uib-dropdown="dropdown">
+                            <button class="btn btn-link dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false"><em class="fa fa-ellipsis-v fa-lg text-muted"></em></button>
+                            <ul class="dropdown-menu dropdown-menu-right animated fadeInLeft" role="menu">
+                                <li><a href=""><span>Send by message</span></a></li>
+                                <li><a href=""><span>Share contact</span></a></li>
+                                <li><a href=""><span>Block contact</span></a></li>
+                                <li><a href=""><span class="text-warning">Delete contact</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="h4 text-center">Contact Information</div>
+                    <div class="row pv-lg">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-8">
+                            <form class="form-horizontal ng-pristine ng-valid">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact1">Name</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="inputContact1" type="text" placeholder="" value="Audrey Hunt">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact2">Email</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="inputContact2" type="email" value="mail@example.com">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact3">Phone</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="inputContact3" type="text" value="(123) 465 789">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact4">Mobile</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="inputContact4" type="text" value="(12) 123 987 465">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact5">Website</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="inputContact5" type="text" value="http://some.wesbite.com">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact6">Address</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="inputContact6" row="4">Some nice Street, 1234</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact7">Social</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="inputContact7" type="text" value="@Social">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="inputContact8">Company</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="inputContact8" type="text" placeholder="No Company">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Favorite contact?</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button class="btn btn-info" type="submit">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="text-right"><a class="text-muted" href="#">Delete this contact?</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<div id="muestroPerfil">
+ 
+
+
+</div>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  
+</body>
+
+</html>

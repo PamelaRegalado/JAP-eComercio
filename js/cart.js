@@ -1,53 +1,106 @@
-var articulo={};
+var articulo = {};
+let productCost = 0;
+let productCount = 0;
+let comissionPercentage = 0.13;
+let MONEY_SYMBOL = "$";
+let PESO_CURRENCY = "Pesos Uruguayos (UYU)";
+let PESO_SYMBOL = "UYU ";
+let PERCENTAGE_SYMBOL = '%';
+let SumaDeSubtotales=0;
 
-function ShowArticulo(articulo){
+
+
+
+function ShowArticulo(articulo) {
 
     let htmlContentToAppend = "";
-    htmlContentToAppend += `
-        <div class="row">
-            <div class="col-3">
-                <img src="` + articulo.src + `" alt="` + articulo.name + `" class="img-thumbnail">
-            </div>
-            <div class="col">
-                <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1">`+ articulo.name +`</h4>
-                    <small class="text-muted">` + articulo.currency + `<span id="unitCost">`+ articulo.unitCost  + `</span>`+ `</small>
-                    <div>
-                    <input type="number" class="form-control cantidad" onChange="Subtotal(${articulo.unitCost})"  min="1" value="` + articulo.count + `" id="countCart">
-                    <br>
-                    <br>
-                    <h3 class="mb-1"> Subtotal </h3>
-                    <small id="subtotal" class="text-muted">` + articulo.count*articulo.unitCost + `</small>
 
-                    </div>
-                </div>
-                </div>
-        </div>
+    for (let i = 0; i < articulo.length; i++) {
+        let art = articulo[i];
+
+        htmlContentToAppend += `
+        <tr>
+        <td><img src=` + art.src +` class="img-thumbnail w-25"></td>
+        <td>`+ art.name + `</td>
+        <td>` + art.currency + `</td>
+        <td><span id="unitCost${i}">` + art.unitCost + `</span></td>
+        <td><input type="number" class="form-control cantidad" onChange="Subtotal(${i})" min="1" value="` + art.count + `" id="countCart${i}"></td>
+        <td><small id="subtotal${i}" class="text-muted">` + art.count * art.unitCost + `</small></td>
+        <td class="text-right"><button onclick="eliminarArticulos(` + i + `)" class="fas fa-trash-alt"></button></td>
+        </tr>
+        
+        
     `
+     if(art.currency == "USD"){
+       SumaDeSubtotales += art.count * art.unitCost *40
+    } else{
+       SumaDeSubtotales += art.count * art.unitCost
+    }
+ };
 
 
-document.getElementById("art-list-container").innerHTML = htmlContentToAppend;
+    document.getElementById("art-list-container").innerHTML = htmlContentToAppend;
+
 }
 
-function Subtotal(){
-    var cantidad= document.getElementById("countCart").value;
-    var unitCost= document.getElementById("unitCost").innerHTML;
-   console.log(cantidad);
-   var subtotal= cantidad*unitCost;
-   console.log(subtotal);
-   document.getElementById("subtotal").innerHTML= subtotal;
-}
-document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(CART_INFO_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        console.log(resultObj.data.articles);
-        ShowArticulo(resultObj.data.articles[0]);
-        
-        
-        
-    });
+
+
+function Subtotal(i) {
+    var cantidad = document.getElementById("countCart" + i).value;
+    var unitCost = document.getElementById("unitCost" + i).innerHTML;
+    var subtotal = cantidad * unitCost;
+    console.log(articulo[i]);
     
-});
+    if(articulo[i].currency == "USD"){
+    
+        SumaDeSubtotales -= articulo[i].count * articulo[i].unitCost * 40  ; //primero se resta
+        articulo[i].count = cantidad;  // con esto actualizo
+        SumaDeSubtotales += articulo[i].count * articulo[i].unitCost * 40 ;
+        }else{
+            SumaDeSubtotales -= articulo[i].count * articulo[i].unitCost ; //primero se resta
+            articulo[i].count = cantidad;  // con esto actualizo
+            SumaDeSubtotales += articulo[i].count * articulo[i].unitCost ;
+
+        }
+     
+    document.getElementById("subtotal" + i).innerHTML = subtotal; 
+    updateTotalCosts();
+
+}
+
+//Función que se utiliza para actualizar los costos de publicación
+function updateTotalCosts(){
+    
+
+    let unitProductCostHTML = document.getElementById("productCostText");
+    let comissionCostHTML = document.getElementById("comissionText");
+    let totalCostHTML = document.getElementById("totalCostText");
+
+    let unitCostToShow = MONEY_SYMBOL + SumaDeSubtotales;
+    let comissionToShow = Math.round(comissionPercentage * SumaDeSubtotales);
+    let totalCostToShow = MONEY_SYMBOL + (comissionToShow + SumaDeSubtotales);
+    
+    
+
+    unitProductCostHTML.innerHTML = unitCostToShow;
+    comissionCostHTML.innerHTML = comissionToShow;
+    totalCostHTML.innerHTML = totalCostToShow;
+    
+}
+
+// Función para mostrar badge de productos en Mi Carrito (barra navegador)
+var cartProduct = []
+function badgesCarrito() {
+    document.getElementById("navMiCarrito").innerHTML = `<span class="badge badge-primary">` + cartProduct.length + `</span>`
+    badgesCarrito();
+}
+
+//función para eliminar elmento del carrito
+
+function eliminarArticulos(posicion){
+    articulo.splice(posicion,1);
+    ShowArticulo();
+}
 
 
 
@@ -55,20 +108,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(CART_INFO_URL).then(function (resultObj) {
+        if (resultObj.status === "ok")
+        articulo=resultObj.data.articles;
+        ShowArticulo(resultObj.data.articles);
 
-document.addEventListener("DOMContentLoaded", function(e){
-    document.getElementById("Miperfil").addEventListener("click",function(){
-        location.href="my-profile.html";
+    });
+    
+    document.getElementById("Premium").addEventListener("change", function(){
+        comissionPercentage = 0.15;
+        updateTotalCosts();
+    });
+    
+    document.getElementById("Express").addEventListener("change", function(){
+        comissionPercentage = 0.07;
+        updateTotalCosts();
+    });
 
-    })});
-    document.addEventListener("DOMContentLoaded", function(e){
-        document.getElementById("Carrito").addEventListener("click",function(){
-            location.href="cart.html";
+    document.getElementById("Standard").addEventListener("change", function(){
+        comissionPercentage = 0.03;
+        updateTotalCosts();
+    });
     
-        })});
-        document.addEventListener("DOMContentLoaded", function(e){
-            document.getElementById("Salir").addEventListener("click",function(){
-                location.href="index.html";
-        
-            })});
     
+});
+     
